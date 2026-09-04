@@ -1,13 +1,13 @@
-# pyrefly: ignore [missing-import]
+import os
 import mysql.connector
 
 
 def get_db_connection():
     connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="BerryJam",
-        database="ai_risk_manager"
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
     )
 
     return connection
