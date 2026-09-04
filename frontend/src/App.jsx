@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API = "http://localhost:8000";
+const API = import.meta.env.VITE_API_URL || "https://payshield-backend-1cyj.onrender.com";
 
 function App() {
   const [payments, setPayments] = useState([]);
