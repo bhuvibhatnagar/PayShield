@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 
 
 # ==========================================
@@ -145,6 +145,19 @@ print("\nModel Accuracy:", round(accuracy * 100, 2), "%")
 print("\nClassification Report:")
 print(classification_report(y_test, predictions))
 
+
+print("\nConfusion Matrix:")
+cm = confusion_matrix(
+    y_test,
+    predictions,
+    labels=["HIGH", "MEDIUM", "LOW"]
+)
+
+print(pd.DataFrame(
+    cm,
+    index=["Actual HIGH", "Actual MEDIUM", "Actual LOW"],
+    columns=["Predicted HIGH", "Predicted MEDIUM", "Predicted LOW"]
+))
 
 # ==========================================
 # 9. SAVE MODEL
